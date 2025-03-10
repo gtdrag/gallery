@@ -215,6 +215,25 @@ class TAGG {
         
         wp_enqueue_style('tagg-admin-style', TAGG_PLUGIN_URL . 'css/tagg-admin.css', array(), TAGG_VERSION);
         wp_enqueue_script('tagg-admin-script', TAGG_PLUGIN_URL . 'js/tagg-admin.js', array('jquery'), TAGG_VERSION, true);
+        
+        // Add inline styles for the admin preview
+        $admin_styles = "
+            .post-type-tagg_logo #postimagediv .inside img {
+                max-width: 200px;
+                max-height: 150px;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
+            .post-type-tagg_logo .wp-list-table .column-thumbnail img {
+                max-width: 100px;
+                max-height: 75px;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
+        ";
+        wp_add_inline_style('tagg-admin-style', $admin_styles);
     }
 
     /**
@@ -226,6 +245,10 @@ class TAGG {
             'limit' => -1,
             'columns' => 3,
             'link' => 'yes',
+            'width' => '',
+            'height' => '',
+            'horizontal_gap' => '20',
+            'vertical_gap' => '20'
         ), $atts, 'tagg_gallery');
         
         $args = array(
@@ -251,6 +274,55 @@ class TAGG {
         ob_start();
         
         if ($logos_query->have_posts()) {
+            // Generate style tag for gallery layout
+            echo '<style>';
+            echo '.tagg-gallery {';
+            echo '    display: grid;';
+            echo '    grid-template-columns: repeat(' . absint($atts['columns']) . ', minmax(0, 1fr));';
+            echo '    column-gap: ' . absint($atts['horizontal_gap']) . 'px;';
+            echo '    row-gap: ' . absint($atts['vertical_gap']) . 'px;';
+            echo '    max-width: 100%;';
+            echo '    width: 100%;';
+            echo '    box-sizing: border-box;';
+            echo '}';
+            
+            echo '@media screen and (max-width: 768px) {';
+            echo '    .tagg-gallery {';
+            echo '        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));';
+            echo '    }';
+            echo '}';
+            
+            echo '.tagg-gallery .tagg-logo {';
+            echo '    display: flex;';
+            echo '    justify-content: center;';
+            echo '    align-items: center;';
+            if (!empty($atts['height'])) {
+                echo '    height: ' . esc_attr($atts['height']) . 'px;';
+            }
+            if (!empty($atts['width'])) {
+                echo '    width: ' . esc_attr($atts['width']) . 'px;';
+                echo '    max-width: 100%;';
+            }
+            echo '    margin: 0 auto;';
+            echo '    box-sizing: border-box;';
+            echo '}';
+            
+            echo '.tagg-gallery .tagg-logo a {';
+            echo '    display: flex;';
+            echo '    justify-content: center;';
+            echo '    align-items: center;';
+            echo '    width: 100%;';
+            echo '    height: 100%;';
+            echo '}';
+            
+            echo '.tagg-gallery .tagg-logo img {';
+            echo '    max-width: 100%;';
+            echo '    max-height: 100%;';
+            echo '    width: auto;';
+            echo '    height: auto;';
+            echo '    object-fit: contain;';
+            echo '}';
+            echo '</style>';
             ?>
             <div class="tagg-gallery">
                 <?php while ($logos_query->have_posts()) : $logos_query->the_post(); ?>
