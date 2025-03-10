@@ -1,0 +1,104 @@
+/**
+ * TAGG - Admin Styles
+ */
+
+.tagg-admin-header {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.tagg-admin-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.tagg-admin-content {
+    margin-top: 20px;
+}
+
+#tagg_logo_details .inside {
+    padding: 15px;
+}
+
+/* Meta box styling */
+#tagg_logo_details label {
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#tagg_logo_details input[type="url"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+/* Admin notice */
+.tagg-notice {
+    background: #fff;
+    border-left: 4px solid #00a0d2;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+    padding: 12px;
+}
+
+.tagg-notice.tagg-notice-success {
+    border-left-color: #46b450;
+}
+
+.tagg-notice.tagg-notice-warning {
+    border-left-color: #ffb900;
+}
+
+.tagg-notice.tagg-notice-error {
+    border-left-color: #dc3232;
+}
+
+/* Settings page */
+.tagg-settings-section {
+    margin-bottom: 30px;
+}
+
+.tagg-settings-section h2 {
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.tagg-field-row {
+    margin-bottom: 15px;
+}
+
+.tagg-field-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.tagg-field-description {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Help section */
+.tagg-help {
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.tagg-help h3 {
+    margin-top: 0;
+}
+
+.tagg-shortcode-example {
+    background: #f1f1f1;
+    padding: 10px;
+    font-family: monospace;
+    margin: 10px 0;
+} 

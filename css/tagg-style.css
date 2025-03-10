@@ -1,0 +1,64 @@
+/**
+ * TAGG - Gallery Frontend Styles
+ */
+
+.tagg-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.tagg-gallery.columns-2 .tagg-logo {
+    width: calc(50% - 30px);
+}
+
+.tagg-gallery.columns-3 .tagg-logo {
+    width: calc(33.33% - 30px);
+}
+
+.tagg-gallery.columns-4 .tagg-logo {
+    width: calc(25% - 30px);
+}
+
+.tagg-gallery.columns-5 .tagg-logo {
+    width: calc(20% - 30px);
+}
+
+.tagg-logo {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tagg-logo-img {
+    max-width: 300px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Hide the title as we want just clean logos */
+.tagg-logo-title {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tagg-gallery.columns-3 .tagg-logo,
+    .tagg-gallery.columns-4 .tagg-logo,
+    .tagg-gallery.columns-5 .tagg-logo {
+        width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .tagg-gallery.columns-2 .tagg-logo,
+    .tagg-gallery.columns-3 .tagg-logo,
+    .tagg-gallery.columns-4 .tagg-logo,
+    .tagg-gallery.columns-5 .tagg-logo {
+        width: calc(100% - 30px);
+    }
+} 
